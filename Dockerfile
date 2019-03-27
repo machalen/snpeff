@@ -36,4 +36,12 @@ RUN wget -O tmp2.tar.gz https://github.com/samtools/bcftools/releases/download/1
     rm /bin/tmp2.tar.gz
 ENV PATH $PATH:/bin/bcftools
 
+#Install snpeff
+WORKDIR /bin
+RUN wget -q https://sourceforge.net/projects/snpeff/files/snpEff_latest_core.zip/download && \
+    unzip download && rm download
+ENV PATH $PATH:/bin/clinEff
+ENV PATH $PATH:/bin/snpEff
 
+#Cleaning
+RUN apt remove -y wget && apt autoclean -y && apt autoremove -y
