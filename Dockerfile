@@ -11,7 +11,7 @@ MAINTAINER Magdalena Arnal <marnal@imim.es>
 
 RUN apt update -y && apt install -y openjdk-8-jdk wget tabix unzip \
    libncurses5-dev vcftools bzip2 g++ make libbz2-dev liblzma-dev \
-   build-essential gcc-multilib apt-utils zlib1g-dev git \
+   build-essential gcc-multilib apt-utils zlib1g-dev git && \
    apt-get clean && \
    rm -rf /var/lib/apt/lists/*
    
