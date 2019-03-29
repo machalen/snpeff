@@ -42,6 +42,8 @@ WORKDIR /bin
 RUN wget -q https://sourceforge.net/projects/snpeff/files/snpEff_latest_core.zip/download && \
     unzip download && rm download
 RUN sed -i 's/.\/data/\/samscratch\/data/g' /bin/snpEff/snpEff.config
+RUN sed -i '126i\# HumanNew\' /bin/snpEff/snpEff.config
+RUN sed -i '127i\GRCh38.92.genome: GRCh38.92\' /bin/snpEff/snpEff.config
 ENV PATH $PATH:/bin/clinEff
 ENV PATH $PATH:/bin/snpEff
 
