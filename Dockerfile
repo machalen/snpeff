@@ -41,9 +41,14 @@ ENV PATH $PATH:/bin/bcftools
 WORKDIR /bin
 RUN wget -q https://sourceforge.net/projects/snpeff/files/snpEff_latest_core.zip/download && \
     unzip download && rm download
-RUN sed -i 's/.\/data/\/users\/gt\/marnal\/data/g' /bin/snpEff/snpEff.config
-RUN sed -i '126i\# HumanNew\' /bin/snpEff/snpEff.config
-RUN sed -i '127i\GRCh38.92.genome: Homo_sapiens\' /bin/snpEff/snpEff.config
+#These steps can be done using a posteriori with a pre defined configuration file
+#java -Xmx4g path/to/snpEff/snpEff.jar -c path/to/snpEff/snpEff.config GRCh37.75 path/to/snps.vcf
+#We have to change the path of data.dir to the path where we have stored the databases
+#Database downloaded, in the case of hg19 for example:
+#wget https://sourceforge.net/projects/snpeff/files/databases/v4_3/snpEff_v4_3_GRCh37.87.zip/download
+#RUN sed -i 's/.\/data/\/users\/gt\/marnal\/data/g' /bin/snpEff/snpEff.config
+#RUN sed -i '126i\# HumanNew\' /bin/snpEff/snpEff.config
+#RUN sed -i '127i\GRCh37.87.genome: Homo_sapiens\' /bin/snpEff/snpEff.config
 ENV PATH $PATH:/bin/clinEff
 ENV PATH $PATH:/bin/snpEff
 
